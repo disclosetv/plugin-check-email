@@ -1,7 +1,7 @@
 # name: plugin-check-email
 # about: An email validator using API
 # version: 0.0.1
-# authors: Terrapop
+# authors: terrapop
 
 # >>> record.errors.add(attribute, I18n.t(:'user.email.not_allowed'))
 
