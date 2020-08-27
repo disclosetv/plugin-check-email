@@ -1,7 +1,7 @@
 plugins:
   plugin_check_email_enabled:
-    default: false
-    client: false
+    default: true
+    client: true
   plugin_check_email_api_url:
     default: "https://api."
-    client: false
+    client: true
