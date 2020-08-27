@@ -3,7 +3,7 @@
 # version: 0.0.1
 # authors: terrapop
 
-# >>>YY> record.errors.add(attribute, I18n.t(:'user.email.not_allowed'))
+# >>>YccY> record.errors.add(attribute, I18n.t(:'user.email.not_allowed'))
 
 require 'net/http'
 
