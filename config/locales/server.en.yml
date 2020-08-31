@@ -1,7 +1,7 @@
 en:
   site_settings:
-    plugin_check_email_enabled: "Enable email validation against external API"
-    plugin_check_email_api_url: "Url to the API endpoint (must return valid or invalid)"
+    plugin_check_email_enabled: "Enable disposable email validation via external API"
+    plugin_check_email_api_url: "URL to API endpoint (must return json {'disposable':true|false}"
   activerecord:
     errors:
       models:
