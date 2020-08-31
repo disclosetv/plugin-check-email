@@ -21,7 +21,7 @@ after_initialize do
 
         def email_checker(email)
             uri = URI(SiteSetting.plugin_check_email_api_url+email)
-            result = Net::HTTP.get(uri)
+            response = Net::HTTP.get(uri)
             parsed_json = JSON.parse(response)
             return parsed_json['disposable']
         end
