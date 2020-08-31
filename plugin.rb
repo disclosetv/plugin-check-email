@@ -4,6 +4,7 @@
 # authors: Terrapop
 
 require 'net/http'
+require 'json'
 
 enabled_site_setting :plugin_check_email_enabled
 
@@ -19,11 +20,28 @@ after_initialize do
             end
         end
 
+        def valid_json?(json)
+              result = JSON.parse(json)
+              result.is_a?(Hash) || result.is_a?(Array)
+            rescue JSON::ParserError, TypeError
+              return false
+        end
+
         def email_checker(email)
             uri = URI(SiteSetting.plugin_check_email_api_url+email)
             response = Net::HTTP.get(uri)
-            parsed_json = JSON.parse(response)
-            return parsed_json['disposable']
+            if valid_json?(response)
+                parsed_json = JSON.parse(response)
+                if parsed_json['disposable'].nil?
+                    Rails.logger.warn("Check email plugin: Json response does not contain key 'disposable'")
+                    return true
+                else
+                    return parsed_json['disposable']
+                end
+            else
+                Rails.logger.warn("Check email plugin: No valid json response, check your API endpoint")
+                return true
+            end
         end
     end
 
