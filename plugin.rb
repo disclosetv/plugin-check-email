@@ -16,7 +16,7 @@ after_initialize do
         def validate_each(record, attribute, value)
             return unless record.should_validate_email_address?
             if email_checker(value)
-              record.errors.add(attribute, :disposable)
+              record.errors.add(attribute, I18n.t(:'user.email.not_allowed'))
             end
         end
 

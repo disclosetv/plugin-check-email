@@ -2,10 +2,3 @@ en:
   site_settings:
     plugin_check_email_enabled: "Enable disposable email validation via external API"
     plugin_check_email_api_url: "URL to API endpoint (must return json {'disposable':true|false}"
-  activerecord:
-    errors:
-      models:
-        user:
-          attributes:
-            email:
-              disposable: "is not allowed from that email provider! Please use another one."
