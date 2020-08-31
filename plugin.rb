@@ -1,7 +1,7 @@
 # name: plugin-check-email
-# about: An email validator using API
+# about:  A password validator using Key free disposable email API
 # version: 0.0.1
-# authors: terrapop
+# authors: Terrapop
 
 require 'net/http'
 
@@ -15,20 +15,15 @@ after_initialize do
         def validate_each(record, attribute, value)
             return unless record.should_validate_email_address?
             if email_checker(value)
-              record.errors.add(attribute, "is not allowed from that email provider! Please use another one.")
+              record.errors.add(attribute, :disposable)
             end
         end
 
         def email_checker(email)
             uri = URI(SiteSetting.plugin_check_email_api_url+email)
             result = Net::HTTP.get(uri)
-            is_invalid = false
-            if result == "invalid"
-                is_invalid = true
-                else
-                is_invalid = false
-            end
-            return is_invalid
+            parsed_json = JSON.parse(response)
+            return parsed_json['disposable']
         end
     end
 

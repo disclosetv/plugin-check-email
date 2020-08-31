@@ -3,5 +3,5 @@ plugins:
     default: false
     client: true
   plugin_check_email_api_url:
-    default: "https://api."
+    default: "https://open.kickbox.com/v1/disposable/"
     client: true

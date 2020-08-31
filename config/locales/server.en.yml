@@ -2,3 +2,6 @@ en:
   site_settings:
     plugin_check_email_enabled: "Enable email validation against external API"
     plugin_check_email_api_url: "Url to the API endpoint (must return valid or invalid)"
+  user:
+    email:
+      disposable: "is not allowed from that email provider! Please use another one."
