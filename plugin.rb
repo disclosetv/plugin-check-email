@@ -1,5 +1,5 @@
 # name: plugin-check-email
-# about:  A password validator using Key free disposable email API
+# about:  Check disposable emails on sign up against the free API provided by kickbox.com
 # version: 0.0.1
 # authors: Terrapop
 
