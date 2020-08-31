@@ -34,13 +34,13 @@ after_initialize do
                 parsed_json = JSON.parse(response)
                 if parsed_json['disposable'].nil?
                     Rails.logger.warn("Check email plugin: Json response does not contain key 'disposable'")
-                    return true
+                    return false
                 else
                     return parsed_json['disposable']
                 end
             else
                 Rails.logger.warn("Check email plugin: No valid json response, check your API endpoint")
-                return true
+                return false
             end
         end
     end
