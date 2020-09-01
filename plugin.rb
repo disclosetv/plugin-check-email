@@ -9,6 +9,9 @@ require 'json'
 enabled_site_setting :plugin_check_email_enabled
 
 after_initialize do
+
+  register_seedfu_filter "001_discobot"
+
   module ::DiscoursePluginCheckEmail
 
     class EmailValidator < ActiveModel::EachValidator
@@ -16,7 +19,7 @@ after_initialize do
         def validate_each(record, attribute, value)
             return unless record.should_validate_email_address?
             if email_checker(value)
-              record.errors.add(attribute, I18n.t(:'user.email.not_allowed'))
+                record.errors.add(attribute, I18n.t(:'user.email.not_allowed'))
             end
         end
 
